@@ -1,0 +1,26 @@
+{
+  "name": "translator",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./cli": "./bin/translator.mjs"
+  },
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "translator": "./bin/translator.mjs"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "translator": "node ./bin/translator.mjs",
+    "prepack": "unbuild"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "citty": "^0.1.4",
+    "consola": "^3.2.3",
+    "unbuild": "^2.0.0"
+  }
+}
