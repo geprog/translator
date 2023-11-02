@@ -4,6 +4,15 @@ import { consola } from 'consola';
 import { JSONAdapter } from './adapters/json';
 import { Adapter } from './adapters';
 
+// TODO: remove work around: https://github.com/unjs/consola/issues/251#issuecomment-1778771579
+const prompt: typeof consola.prompt = async (message, options) => {
+  const response = await consola.prompt(message, options);
+  if (response?.toString() === 'Symbol(clack:cancel)') {
+    process.exit(0);
+  }
+  return response;
+};
+
 const main = defineCommand({
   meta: {
     name: 'translator',
@@ -15,7 +24,6 @@ const main = defineCommand({
       args: {
         path: {
           type: 'string',
-          default: process.cwd(),
           description: 'Path to the translations file or directory',
         },
       },
@@ -26,7 +34,7 @@ const main = defineCommand({
       async run({ args }) {
         consola.info('Using @geprog/translator');
 
-        const adapter: Adapter = new JSONAdapter({ path: args.path });
+        const adapter: Adapter = new JSONAdapter({ path: args.path || args._?.[0] || process.cwd() });
 
         const translations = await adapter.load();
 
@@ -66,11 +74,10 @@ const main = defineCommand({
             }, '')}`,
           );
 
-          const shouldCleanup = await consola.prompt(
+          const shouldCleanup = await prompt(
             'Do you want to remove all unused languages keys that are not present in the default language? (y/n)',
             {
               type: 'confirm',
-              required: true,
             },
           );
 
@@ -97,8 +104,8 @@ const main = defineCommand({
 
           for (const key of Object.keys(translations[defaultLanguage])) {
             if (!languageTranslations[key]) {
-              const newTranslation = await consola.prompt(
-                `[${language}] Please enter the translation for "${key}" in "${language}":`,
+              const newTranslation = await prompt(
+                `[${language}] Translation for "${translations[defaultLanguage][key]}":`,
                 {
                   type: 'text',
                   required: true,
@@ -119,7 +126,13 @@ const main = defineCommand({
 
         consola.success(`Translated ${translatedTexts} texts`);
 
-        await adapter.save(translations);
+        const shouldSave = await prompt('Do you want to save your changes? (y/n)', {
+          type: 'confirm',
+        });
+
+        if (shouldSave) {
+          await adapter.save(translations);
+        }
       },
     },
   },

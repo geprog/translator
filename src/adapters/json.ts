@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { Adapter, FileMode, Translations } from '.';
+import { flatten, unflatten } from './utils';
 
 export class JSONAdapter implements Adapter {
   path: string;
@@ -30,7 +31,7 @@ export class JSONAdapter implements Adapter {
           const locale = file.replace(`.${this.fileExtension}`, '');
           locales.push(locale);
           const content = await fs.readFile(`${this.path}/${file}`, 'utf-8');
-          translations[locale] = JSON.parse(content);
+          translations[locale] = flatten(JSON.parse(content));
         }
       }
     } else {
@@ -44,10 +45,16 @@ export class JSONAdapter implements Adapter {
   async save(translations: Record<string, Translations>) {
     if ((await this.getFileMode()) === 'file-per-locale') {
       for await (const [locale, content] of Object.entries(translations)) {
-        await fs.writeFile(path.join(this.path, `${locale}.${this.fileExtension}`), JSON.stringify(content, null, 2));
+        await fs.writeFile(
+          path.join(this.path, `${locale}.${this.fileExtension}`),
+          JSON.stringify(unflatten(content), null, 2) + '\n',
+        );
       }
     } else {
-      await fs.writeFile(this.path, JSON.stringify(translations, null, 2));
+      for await (const [locale, content] of Object.entries(translations)) {
+        translations[locale] = unflatten(content);
+      }
+      await fs.writeFile(this.path, JSON.stringify(translations, null, 2) + '\n');
     }
   }
 }
