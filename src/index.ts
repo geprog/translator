@@ -24,7 +24,7 @@ const main = defineCommand({
         description: 'Translate',
       },
       async run({ args }) {
-        consola.info('Using translator 1.0.0');
+        consola.info('Using @geprog/translator');
 
         const adapter: Adapter = new JSONAdapter({ path: args.path });
 
