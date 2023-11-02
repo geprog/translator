@@ -1,31 +1,38 @@
-import { defineCommand, runMain as _runMain } from "citty";
-import { consola } from "consola";
+import { defineCommand, runMain as _runMain } from 'citty';
+import { consola } from 'consola';
 
-import { JSONAdapter } from "./adapters/json";
-import { Adapter } from "./adapters";
+import { JSONAdapter } from './adapters/json';
+import { Adapter } from './adapters';
 
 const main = defineCommand({
   meta: {
-    name: "translator",
-    version: "1.0.0",
-    description: "Translate your app",
+    name: 'translator',
+    version: '1.0.0',
+    description: 'Translate your app',
   },
   subCommands: {
     translate: {
+      args: {
+        path: {
+          type: 'string',
+          default: process.cwd(),
+          description: 'Path to the translations file or directory',
+        },
+      },
       meta: {
-        name: "translate",
-        description: "Translate",
+        name: 'translate',
+        description: 'Translate',
       },
       async run({ args }) {
-        consola.info("Using translator 1.0.0");
+        consola.info('Using translator 1.0.0');
 
-        const adapter: Adapter = new JSONAdapter();
+        const adapter: Adapter = new JSONAdapter({ path: args.path });
 
         const translations = await adapter.load();
 
         const languages = Object.keys(translations);
 
-        const defaultLanguage = "en"; // TODO: allow to configure
+        const defaultLanguage = 'en'; // TODO: allow to configure
 
         const notInDefaultLanguage: Record<string, string[]> = {};
         let hasUnusedKeys = false;
@@ -50,21 +57,21 @@ const main = defineCommand({
         if (hasUnusedKeys) {
           consola.warn(
             `You have the following keys that are not present in the default language:\n${Object.entries(
-              notInDefaultLanguage
+              notInDefaultLanguage,
             ).reduce((acc, [language, keys]) => {
               if (keys.length === 0) {
                 return acc;
               }
-              return `${acc}\n[${language}]:\n  ${keys.join("\n  ")}`;
-            }, "")}`
+              return `${acc}\n[${language}]:\n  ${keys.join('\n  ')}`;
+            }, '')}`,
           );
 
           const shouldCleanup = await consola.prompt(
-            "Do you want to remove all unused languages keys that are not present in the default language? (y/n)",
+            'Do you want to remove all unused languages keys that are not present in the default language? (y/n)',
             {
-              type: "confirm",
+              type: 'confirm',
               required: true,
-            }
+            },
           );
 
           if (shouldCleanup) {
@@ -93,10 +100,10 @@ const main = defineCommand({
               const newTranslation = await consola.prompt(
                 `[${language}] Please enter the translation for "${key}" in "${language}":`,
                 {
-                  type: "text",
+                  type: 'text',
                   required: true,
                   placeholder: `[${defaultLanguage}]: ${translations[defaultLanguage][key]}`,
-                }
+                },
               );
 
               if (!newTranslation) {

@@ -1,33 +1,53 @@
-import { Adapter, FileMode, Translations } from ".";
+import fs from 'fs/promises';
+import path from 'path';
+import { Adapter, FileMode, Translations } from '.';
 
 export class JSONAdapter implements Adapter {
-  mode: FileMode;
+  path: string;
+  fileExtension = 'json';
 
-  constructor({ mode }: { mode?: FileMode } = {}) {
-    this.mode = mode ?? "file-per-locale";
+  constructor({ path }: { path: string }) {
+    this.path = path;
+  }
+
+  private async getFileMode(): Promise<FileMode> {
+    const stat = await fs.stat(this.path);
+    if (stat.isDirectory()) {
+      return 'file-per-locale';
+    }
+
+    return 'single-file';
   }
 
   async load() {
-    // TODO: implement
-    return {
-      de: {
-        "hello.world": "Hallo Welt",
-        "not.in.en": "Hallo du bist nicht in en",
-        "not.in.en.two": "Hallo du bist nicht in en two",
-        "not.in.en.three": "Hallo du bist nicht in en two",
-      },
-      en: {
-        "hello.world": "Hello World",
-        "missing.in.de": "Hello you are missing in de",
-      },
-      es: {
-        "hello.world": "Hola Mundo",
-      },
-    };
+    const locales: string[] = [];
+    const translations: Record<string, Translations> = {};
+
+    if ((await this.getFileMode()) === 'file-per-locale') {
+      const files = await fs.readdir(this.path);
+      for await (const file of files) {
+        if (!file.startsWith('.') && file.endsWith(`.${this.fileExtension}`)) {
+          const locale = file.replace(`.${this.fileExtension}`, '');
+          locales.push(locale);
+          const content = await fs.readFile(`${this.path}/${file}`, 'utf-8');
+          translations[locale] = JSON.parse(content);
+        }
+      }
+    } else {
+      const content = await fs.readFile(this.path, 'utf-8');
+      return JSON.parse(content);
+    }
+
+    return translations;
   }
 
   async save(translations: Record<string, Translations>) {
-    // TODO: implement
-    console.log(translations);
+    if ((await this.getFileMode()) === 'file-per-locale') {
+      for await (const [locale, content] of Object.entries(translations)) {
+        await fs.writeFile(path.join(this.path, `${locale}.${this.fileExtension}`), JSON.stringify(content, null, 2));
+      }
+    } else {
+      await fs.writeFile(this.path, JSON.stringify(translations, null, 2));
+    }
   }
 }

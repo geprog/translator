@@ -5,4 +5,4 @@ export interface Adapter {
   save(translations: Record<string, Translations>): Promise<void>;
 }
 
-export type FileMode = "single-file" | "file-per-locale";
+export type FileMode = 'single-file' | 'file-per-locale';

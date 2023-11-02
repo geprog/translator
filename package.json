@@ -1,7 +1,9 @@
 {
-  "name": "translator",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@geprog/translator",
+  "version": "0.0.0-semantic-release",
+  "description": "A simple cli for translations",
+  "homepage": "https://geprog.com",
+  "repository": "github:geprog/translator",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -12,15 +14,26 @@
   "bin": {
     "translator": "./bin/translator.mjs"
   },
+  "files": [
+    "dist",
+    "bin"
+  ],
   "scripts": {
     "build": "unbuild",
     "translator": "node ./bin/translator.mjs",
-    "prepack": "unbuild"
+    "prepack": "unbuild",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "release": "semantic-release"
   },
   "devDependencies": {
+    "@geprog/semantic-release-config": "^2.0.0",
     "@types/node": "^20.8.9",
     "citty": "^0.1.4",
     "consola": "^3.2.3",
+    "prettier": "^3.0.3",
+    "semantic-release": "^22.0.6",
+    "typescript": "^5.2.2",
     "unbuild": "^2.0.0"
   }
 }
