@@ -7,6 +7,9 @@ export default defineBuildConfig({
     resolve: {
       exportConditions: ['production', 'node'] as any,
     },
+    output: {
+      sourcemap: true,
+    },
   },
   entries: ['src/index'],
 });

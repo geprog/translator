@@ -16,7 +16,7 @@ const prompt: typeof consola.prompt = async (message, options) => {
 const main = defineCommand({
   meta: {
     name: 'translator',
-    version: '1.0.0',
+    version: '1.1.0',
     description: 'Translate your app',
   },
   subCommands: {
@@ -25,6 +25,11 @@ const main = defineCommand({
         path: {
           type: 'string',
           description: 'Path to the translations file or directory',
+        },
+        'default-language': {
+          type: 'string',
+          default: 'en',
+          description: 'Default language',
         },
       },
       meta: {
@@ -40,7 +45,15 @@ const main = defineCommand({
 
         const languages = Object.keys(translations);
 
-        const defaultLanguage = 'en'; // TODO: allow to configure
+        const defaultLanguage = args['default-language'];
+
+        consola.debug('Languages:', languages);
+        consola.debug('Default language:', defaultLanguage);
+
+        if (!languages.includes(defaultLanguage)) {
+          consola.error(`Default language "${defaultLanguage}" not found in translations`);
+          return;
+        }
 
         const notInDefaultLanguage: Record<string, string[]> = {};
         let hasUnusedKeys = false;
