@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "translator": "node ./bin/translator.mjs",
+    "translator": "node --enable-source-maps ./bin/translator.mjs",
     "prepack": "unbuild",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
@@ -29,11 +29,11 @@
   "devDependencies": {
     "@geprog/semantic-release-config": "^2.0.0",
     "@types/node": "^20.8.9",
-    "citty": "^0.1.4",
+    "citty": "^0.1.6",
     "consola": "^3.2.3",
-    "prettier": "^3.0.3",
+    "prettier": "^3.2.5",
     "semantic-release": "^22.0.6",
-    "typescript": "^5.2.2",
+    "typescript": "^5.4.5",
     "unbuild": "^2.0.0"
   }
 }
