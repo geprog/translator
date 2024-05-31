@@ -10,28 +10,28 @@ importers:
     devDependencies:
       '@geprog/semantic-release-config':
         specifier: ^2.0.0
-        version: 2.0.0(semantic-release@22.0.6)
+        version: 2.0.0(semantic-release@22.0.6(typescript@5.4.5))
       '@types/node':
         specifier: ^20.8.9
         version: 20.8.9
       citty:
-        specifier: ^0.1.4
-        version: 0.1.4
+        specifier: ^0.1.6
+        version: 0.1.6
       consola:
         specifier: ^3.2.3
         version: 3.2.3
       prettier:
-        specifier: ^3.0.3
-        version: 3.0.3
+        specifier: ^3.2.5
+        version: 3.2.5
       semantic-release:
         specifier: ^22.0.6
-        version: 22.0.6(typescript@5.2.2)
+        version: 22.0.6(typescript@5.4.5)
       typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
+        specifier: ^5.4.5
+        version: 5.4.5
       unbuild:
         specifier: ^2.0.0
-        version: 2.0.0(typescript@5.2.2)
+        version: 2.0.0(typescript@5.4.5)
 
 packages:
 
@@ -811,8 +811,8 @@ packages:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
     engines: {node: '>=10'}
 
-  citty@0.1.4:
-    resolution: {integrity: sha512-Q3bK1huLxzQrvj7hImJ7Z1vKYJRPQCDnd0EjXfHMidcjecGOMuLrmuQmtWmFkuKLcMThlGh1yCKG8IEc6VeNXQ==}
+  citty@0.1.6:
+    resolution: {integrity: sha512-tskPPKEs8D2KPafUypv2gxwJP8h/OaJmC82QQGGDQcHvXX43xF2VDACcJVmZ0EuSxkpO9Kc4MlrA3q0+FG58AQ==}
 
   clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -1876,8 +1876,8 @@ packages:
   pkg-types@1.0.3:
     resolution: {integrity: sha512-nN7pYi0AQqJnoLPC9eHFQ8AcyaixBUOwvqc5TDnIKCMEE6I0y8P7OKA7fPexsXGCGxQDl/cmrLAp26LhcwxZ4A==}
 
-  prettier@3.0.3:
-    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+  prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2217,8 +2217,8 @@ packages:
     resolution: {integrity: sha512-rLjWJzQFOq4xw7MgJrCZ6T1jIOvvYElXT12r+y0CC6u67hegDHaxcPqb2fZHOGlqxugGQPNB1EnTezjBetkwkw==}
     engines: {node: '>=16'}
 
-  typescript@5.2.2:
-    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+  typescript@5.4.5:
+    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2604,13 +2604,13 @@ snapshots:
   '@esbuild/win32-x64@0.19.5':
     optional: true
 
-  '@geprog/semantic-release-config@2.0.0(semantic-release@22.0.6)':
+  '@geprog/semantic-release-config@2.0.0(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
-      '@semantic-release/commit-analyzer': 9.0.2(semantic-release@22.0.6)
-      '@semantic-release/github': 8.0.7(semantic-release@22.0.6)
-      '@semantic-release/npm': 9.0.2(semantic-release@22.0.6)
-      '@semantic-release/release-notes-generator': 10.0.3(semantic-release@22.0.6)
-      semantic-release: 22.0.6(typescript@5.2.2)
+      '@semantic-release/commit-analyzer': 9.0.2(semantic-release@22.0.6(typescript@5.4.5))
+      '@semantic-release/github': 8.0.7(semantic-release@22.0.6(typescript@5.4.5))
+      '@semantic-release/npm': 9.0.2(semantic-release@22.0.6(typescript@5.4.5))
+      '@semantic-release/release-notes-generator': 10.0.3(semantic-release@22.0.6(typescript@5.4.5))
+      semantic-release: 22.0.6(typescript@5.4.5)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -2801,8 +2801,9 @@ snapshots:
 
   '@rollup/plugin-alias@5.0.1(rollup@3.29.4)':
     dependencies:
-      rollup: 3.29.4
       slash: 4.0.0
+    optionalDependencies:
+      rollup: 3.29.4
 
   '@rollup/plugin-commonjs@25.0.7(rollup@3.29.4)':
     dependencies:
@@ -2812,11 +2813,13 @@ snapshots:
       glob: 8.1.0
       is-reference: 1.2.1
       magic-string: 0.30.5
+    optionalDependencies:
       rollup: 3.29.4
 
   '@rollup/plugin-json@6.0.1(rollup@3.29.4)':
     dependencies:
       '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
+    optionalDependencies:
       rollup: 3.29.4
 
   '@rollup/plugin-node-resolve@15.2.3(rollup@3.29.4)':
@@ -2827,12 +2830,14 @@ snapshots:
       is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.8
+    optionalDependencies:
       rollup: 3.29.4
 
   '@rollup/plugin-replace@5.0.4(rollup@3.29.4)':
     dependencies:
       '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
       magic-string: 0.30.5
+    optionalDependencies:
       rollup: 3.29.4
 
   '@rollup/pluginutils@5.0.5(rollup@3.29.4)':
@@ -2840,9 +2845,10 @@ snapshots:
       '@types/estree': 1.0.3
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    optionalDependencies:
       rollup: 3.29.4
 
-  '@semantic-release/commit-analyzer@11.0.0(semantic-release@22.0.6)':
+  '@semantic-release/commit-analyzer@11.0.0(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
       conventional-changelog-angular: 7.0.0
       conventional-commits-filter: 4.0.0
@@ -2851,11 +2857,11 @@ snapshots:
       import-from: 4.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.5
-      semantic-release: 22.0.6(typescript@5.2.2)
+      semantic-release: 22.0.6(typescript@5.4.5)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/commit-analyzer@9.0.2(semantic-release@22.0.6)':
+  '@semantic-release/commit-analyzer@9.0.2(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
       conventional-changelog-angular: 5.0.13
       conventional-commits-filter: 2.0.7
@@ -2864,7 +2870,7 @@ snapshots:
       import-from: 4.0.0
       lodash: 4.17.21
       micromatch: 4.0.5
-      semantic-release: 22.0.6(typescript@5.2.2)
+      semantic-release: 22.0.6(typescript@5.4.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -2872,7 +2878,7 @@ snapshots:
 
   '@semantic-release/error@4.0.0': {}
 
-  '@semantic-release/github@8.0.7(semantic-release@22.0.6)':
+  '@semantic-release/github@8.0.7(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
       '@octokit/rest': 19.0.13
       '@semantic-release/error': 3.0.0
@@ -2889,13 +2895,13 @@ snapshots:
       mime: 3.0.0
       p-filter: 2.1.0
       p-retry: 4.6.2
-      semantic-release: 22.0.6(typescript@5.2.2)
+      semantic-release: 22.0.6(typescript@5.4.5)
       url-join: 4.0.1
     transitivePeerDependencies:
       - encoding
       - supports-color
 
-  '@semantic-release/github@9.2.1(semantic-release@22.0.6)':
+  '@semantic-release/github@9.2.1(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
       '@octokit/core': 5.0.1
       '@octokit/plugin-paginate-rest': 9.1.2(@octokit/core@5.0.1)
@@ -2912,12 +2918,12 @@ snapshots:
       lodash-es: 4.17.21
       mime: 3.0.0
       p-filter: 3.0.0
-      semantic-release: 22.0.6(typescript@5.2.2)
+      semantic-release: 22.0.6(typescript@5.4.5)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/npm@11.0.0(semantic-release@22.0.6)':
+  '@semantic-release/npm@11.0.0(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
@@ -2930,11 +2936,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 8.1.0
       registry-auth-token: 5.0.2
-      semantic-release: 22.0.6(typescript@5.2.2)
+      semantic-release: 22.0.6(typescript@5.4.5)
       semver: 7.5.4
       tempy: 3.1.0
 
-  '@semantic-release/npm@9.0.2(semantic-release@22.0.6)':
+  '@semantic-release/npm@9.0.2(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -2947,11 +2953,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 5.2.0
       registry-auth-token: 5.0.2
-      semantic-release: 22.0.6(typescript@5.2.2)
+      semantic-release: 22.0.6(typescript@5.4.5)
       semver: 7.5.4
       tempy: 1.0.1
 
-  '@semantic-release/release-notes-generator@10.0.3(semantic-release@22.0.6)':
+  '@semantic-release/release-notes-generator@10.0.3(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
       conventional-changelog-angular: 5.0.13
       conventional-changelog-writer: 5.0.1
@@ -2963,11 +2969,11 @@ snapshots:
       into-stream: 6.0.0
       lodash: 4.17.21
       read-pkg-up: 7.0.1
-      semantic-release: 22.0.6(typescript@5.2.2)
+      semantic-release: 22.0.6(typescript@5.4.5)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/release-notes-generator@12.0.0(semantic-release@22.0.6)':
+  '@semantic-release/release-notes-generator@12.0.0(semantic-release@22.0.6(typescript@5.4.5))':
     dependencies:
       conventional-changelog-angular: 7.0.0
       conventional-changelog-writer: 7.0.1
@@ -2979,7 +2985,7 @@ snapshots:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-pkg-up: 10.1.0
-      semantic-release: 22.0.6(typescript@5.2.2)
+      semantic-release: 22.0.6(typescript@5.4.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -3116,7 +3122,7 @@ snapshots:
 
   char-regex@1.0.2: {}
 
-  citty@0.1.4:
+  citty@0.1.6:
     dependencies:
       consola: 3.2.3
 
@@ -3227,13 +3233,14 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cosmiconfig@8.3.6(typescript@5.2.2):
+  cosmiconfig@8.3.6(typescript@5.4.5):
     dependencies:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
-      typescript: 5.2.2
+    optionalDependencies:
+      typescript: 5.4.5
 
   cross-spawn@7.0.3:
     dependencies:
@@ -3826,9 +3833,9 @@ snapshots:
 
   minimist@1.2.8: {}
 
-  mkdist@1.3.0(typescript@5.2.2):
+  mkdist@1.3.0(typescript@5.4.5):
     dependencies:
-      citty: 0.1.4
+      citty: 0.1.6
       defu: 6.1.3
       esbuild: 0.18.20
       fs-extra: 11.1.1
@@ -3837,7 +3844,8 @@ snapshots:
       mlly: 1.4.2
       mri: 1.2.0
       pathe: 1.1.1
-      typescript: 5.2.2
+    optionalDependencies:
+      typescript: 5.4.5
 
   mlly@1.4.2:
     dependencies:
@@ -4034,7 +4042,7 @@ snapshots:
       mlly: 1.4.2
       pathe: 1.1.1
 
-  prettier@3.0.3: {}
+  prettier@3.2.5: {}
 
   pretty-bytes@6.1.1: {}
 
@@ -4130,11 +4138,11 @@ snapshots:
     dependencies:
       glob: 7.2.3
 
-  rollup-plugin-dts@6.1.0(rollup@3.29.4)(typescript@5.2.2):
+  rollup-plugin-dts@6.1.0(rollup@3.29.4)(typescript@5.4.5):
     dependencies:
       magic-string: 0.30.5
       rollup: 3.29.4
-      typescript: 5.2.2
+      typescript: 5.4.5
     optionalDependencies:
       '@babel/code-frame': 7.22.13
 
@@ -4152,15 +4160,15 @@ snapshots:
 
   scule@1.0.0: {}
 
-  semantic-release@22.0.6(typescript@5.2.2):
+  semantic-release@22.0.6(typescript@5.4.5):
     dependencies:
-      '@semantic-release/commit-analyzer': 11.0.0(semantic-release@22.0.6)
+      '@semantic-release/commit-analyzer': 11.0.0(semantic-release@22.0.6(typescript@5.4.5))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 9.2.1(semantic-release@22.0.6)
-      '@semantic-release/npm': 11.0.0(semantic-release@22.0.6)
-      '@semantic-release/release-notes-generator': 12.0.0(semantic-release@22.0.6)
+      '@semantic-release/github': 9.2.1(semantic-release@22.0.6(typescript@5.4.5))
+      '@semantic-release/npm': 11.0.0(semantic-release@22.0.6(typescript@5.4.5))
+      '@semantic-release/release-notes-generator': 12.0.0(semantic-release@22.0.6(typescript@5.4.5))
       aggregate-error: 5.0.0
-      cosmiconfig: 8.3.6(typescript@5.2.2)
+      cosmiconfig: 8.3.6(typescript@5.4.5)
       debug: 4.3.4
       env-ci: 10.0.0
       execa: 8.0.1
@@ -4368,14 +4376,14 @@ snapshots:
 
   type-fest@4.6.0: {}
 
-  typescript@5.2.2: {}
+  typescript@5.4.5: {}
 
   ufo@1.3.1: {}
 
   uglify-js@3.17.4:
     optional: true
 
-  unbuild@2.0.0(typescript@5.2.2):
+  unbuild@2.0.0(typescript@5.4.5):
     dependencies:
       '@rollup/plugin-alias': 5.0.1(rollup@3.29.4)
       '@rollup/plugin-commonjs': 25.0.7(rollup@3.29.4)
@@ -4384,7 +4392,7 @@ snapshots:
       '@rollup/plugin-replace': 5.0.4(rollup@3.29.4)
       '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
       chalk: 5.3.0
-      citty: 0.1.4
+      citty: 0.1.6
       consola: 3.2.3
       defu: 6.1.3
       esbuild: 0.19.5
@@ -4392,16 +4400,17 @@ snapshots:
       hookable: 5.5.3
       jiti: 1.20.0
       magic-string: 0.30.5
-      mkdist: 1.3.0(typescript@5.2.2)
+      mkdist: 1.3.0(typescript@5.4.5)
       mlly: 1.4.2
       pathe: 1.1.1
       pkg-types: 1.0.3
       pretty-bytes: 6.1.1
       rollup: 3.29.4
-      rollup-plugin-dts: 6.1.0(rollup@3.29.4)(typescript@5.2.2)
+      rollup-plugin-dts: 6.1.0(rollup@3.29.4)(typescript@5.4.5)
       scule: 1.0.0
-      typescript: 5.2.2
       untyped: 1.4.0
+    optionalDependencies:
+      typescript: 5.4.5
     transitivePeerDependencies:
       - sass
       - supports-color
